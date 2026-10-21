@@ -84,6 +84,10 @@ git config core.hooksPath .githooks
 
 Grafana/Loki/Promtail configs under [`grafana/`](grafana/) and [`docker-compose.yml`](docker-compose.yml) are provided for local observability tooling; see [`monitoring/`](monitoring/) for uptime/status-page setup.
 
+### Alerts
+
+Grafana alert rules are provisioned from [`grafana/provisioning/alerting/`](grafana/provisioning/alerting/). The `ESCROW.emergency_drain` rule fires within 1 minute of any emergency drain event on `payment_escrow`, pages PagerDuty, and notifies Slack `#security`. See the [emergency drain runbook](docs/security/emergency_drain_runbook.md).
+
 ## Docs
 
 - [Escrow upgrade procedure](docs/escrow_upgrade_procedure.md)
@@ -110,3 +114,6 @@ Grafana/Loki/Promtail configs under [`grafana/`](grafana/) and [`docker-compose.
 
 <!-- handsoff-issue-1313 -->
 - #1313: [P3] Add contract README for each of the 14 contracts
+
+<!-- handsoff-issue-1323 -->
+- #1323: [P3] Add Grafana alert rule for emergency_drain event
