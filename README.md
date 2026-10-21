@@ -61,6 +61,20 @@ cargo build --target wasm32v1-none --release
 cargo test
 ```
 
+### Lint
+
+`make lint` runs all static checks in sequence — `cargo clippy`, `cargo fmt --check`, and `cargo audit` — stopping at the first failure with a message identifying which check failed:
+
+```bash
+make lint
+```
+
+The pre-push git hook (`.githooks/pre-push`) runs `make lint`, so install the hooks once per clone:
+
+```bash
+git config core.hooksPath .githooks
+```
+
 ## CI/CD
 
 - **CI** ([`.github/workflows/ci.yml`](.github/workflows/ci.yml)) — runs `cargo test`, coverage (tarpaulin), and a WASM build on every push/PR.
