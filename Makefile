@@ -1,6 +1,6 @@
 # Makefile for common development tasks
 
-.PHONY: lint lint-clippy lint-fmt lint-audit
+.PHONY: build build-optimised check-wasm-size test verify-deployment lint lint-clippy lint-fmt lint-audit
 
 # Run all lint checks in sequence. Stops on the first failure with a clear
 # message identifying which check failed.
@@ -21,3 +21,9 @@ lint-fmt:
 
 lint-audit:
 	cargo audit
+
+test:
+	cd $(CONTRACTS_DIR) && cargo test
+
+verify-deployment:
+	bash scripts/verify-deployment.sh
